@@ -12,4 +12,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PROJETO.IHC.Domain\PROJETO.IHC.Domain.csproj" />
+    <ProjectReference Include="..\PROJETO.IHC.Repository\PROJETO.IHC.Repository.csproj" />
+    <ProjectReference Include="..\PROJETO.IHC.Service\PROJETO.IHC.Service.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -13,4 +13,8 @@
     <Folder Include="Repositories\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PROJETO.IHC.Domain\PROJETO.IHC.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
