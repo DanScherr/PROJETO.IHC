@@ -13,7 +13,7 @@ namespace PROJETO.IHC.Domain.Entities
             this.Sexo = sexo;
             this.DocumentoCPF = documentoCPF;
             this.Contato = contato;
-            Endereco = endereco;
+            this.Endereco = endereco;
         }
 
         public string Nome { get; set; }
@@ -24,8 +24,10 @@ namespace PROJETO.IHC.Domain.Entities
 
         public string DocumentoCPF { get; set; }
 
-        public Endereco Endereco { get; set; }
+        public virtual ICollection<Proposta> Propostas { get; set; }
 
-        public Contato Contato { get; set; }
+        public virtual Endereco Endereco { get; set; }
+
+        public virtual Contato Contato { get; set; }
     }
 }

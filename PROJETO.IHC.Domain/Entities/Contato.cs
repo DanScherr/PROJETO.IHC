@@ -13,5 +13,9 @@
         public string Telefone { get; set; }
 
         public string Email { get; set; }
+
+        public virtual Colaborador Colaborador { get; set; }
+
+        public virtual Empresa Empresa { get; set; }
     }
 }

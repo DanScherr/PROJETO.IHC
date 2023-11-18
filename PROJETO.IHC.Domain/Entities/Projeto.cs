@@ -21,6 +21,10 @@ namespace PROJETO.IHC.Domain.Entities
 
         public string DescricaoProjeto { get; set; }
 
-        public Endereco Endereco { get; set; }
+        public virtual Endereco Endereco { get; set; }
+
+        public virtual ICollection<Proposta> Propostas { get; set; }
+
+        public virtual Empresa Empresa { get; set; }
     }
 }

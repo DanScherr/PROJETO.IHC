@@ -31,5 +31,11 @@ namespace PROJETO.IHC.Domain.Entities
         public string UF { get; set; }
 
         public string CEP { get; set; }
+
+        public virtual Colaborador Colaborador { get; set; }
+
+        public virtual Empresa Empresa { get; set; }
+
+        public virtual Projeto Projeto { get; set; }
     }
 }

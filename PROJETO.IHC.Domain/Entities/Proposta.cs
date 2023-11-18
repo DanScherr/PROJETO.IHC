@@ -27,5 +27,9 @@ namespace PROJETO.IHC.Domain.Entities
         public decimal ValorProsposta { get; set; }
 
         public EStatusProposta StatusProposta { get; set; }
+
+        public virtual Colaborador Colaborador { get; set; }
+
+        public virtual Projeto Projeto { get; set; }
     }
 }
