@@ -28,6 +28,9 @@ namespace PROJETO.IHC.Domain.Entities
 
         public EStatusProposta StatusProposta { get; set; }
 
+
+        public virtual ICollection<QualificacaoProposta> QualificacaoPropostas { get; set; }
+
         public virtual Colaborador Colaborador { get; set; }
 
         public virtual Projeto Projeto { get; set; }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PROJETO.IHC.Domain.Entities
+﻿namespace PROJETO.IHC.Domain.Entities
 {
     public class Projeto : EntityBase
     {
@@ -20,6 +14,7 @@ namespace PROJETO.IHC.Domain.Entities
         public string NomeProjeto { get; set; }
 
         public string DescricaoProjeto { get; set; }
+
 
         public virtual Endereco Endereco { get; set; }
 

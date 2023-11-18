@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PROJETO.IHC.Domain.Entities
+﻿namespace PROJETO.IHC.Domain.Entities
 {
     public class Endereco : EntityBase
     {
@@ -31,6 +25,7 @@ namespace PROJETO.IHC.Domain.Entities
         public string UF { get; set; }
 
         public string CEP { get; set; }
+
 
         public virtual Colaborador Colaborador { get; set; }
 

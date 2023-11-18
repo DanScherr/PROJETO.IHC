@@ -2,7 +2,7 @@
 
 namespace PROJETO.IHC.Domain.Entities
 {
-    internal class Colaborador : EntityBase
+    public class Colaborador : EntityBase
     {
         public Colaborador() { }
 
@@ -24,7 +24,10 @@ namespace PROJETO.IHC.Domain.Entities
 
         public string DocumentoCPF { get; set; }
 
+
         public virtual ICollection<Proposta> Propostas { get; set; }
+
+        public virtual ICollection<QualificacaoColaborador> QualificacaoColaborador { get; set; }
 
         public virtual Endereco Endereco { get; set; }
 

@@ -19,6 +19,7 @@
 
         public string SiteEmpresa { get; set; }
 
+
         public virtual Endereco Endereco { get; set; }
 
         public virtual Contato Contato { get; set; }
