@@ -13,6 +13,11 @@ namespace PROJETO.IHC.Service.Services
             _colaboradorRepository = colaboradorRepository;
         }
 
+        public ColaboradorOutputDTO GetColaboradorById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<ColaboradorOutputDTO> GetAllColaboradores()
         {
             var listColaboradores = _colaboradorRepository.ObterTodos();
@@ -37,6 +42,21 @@ namespace PROJETO.IHC.Service.Services
                     Ativo = x.Ativo
                 };
             }).ToList();
+        }
+
+        public ColaboradorOutputDTO InsertColaborador(ColaboradorInsertDTO colaboradorInsertDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ColaboradorOutputDTO UpdateColaborador(ColaboradorUpdateDTO colaboradorUpdateDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteColaborador(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
