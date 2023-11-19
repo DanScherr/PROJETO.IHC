@@ -27,8 +27,4 @@
     <ProjectReference Include="..\PROJETO.IHC.Service\PROJETO.IHC.Service.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
