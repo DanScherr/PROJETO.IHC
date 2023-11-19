@@ -17,6 +17,21 @@ namespace PROJETO.IHC.API.Controllers
             _colaboradorService = colaboradorService;
         }
 
+        [HttpGet("{id:int}")]
+        public IActionResult GetColaboradoresById(int id)
+        {
+            try
+            {
+                var colaborador = _colaboradorService.GetColaboradorById(id);
+
+                return Ok(colaborador);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+
         [HttpGet]
         public IActionResult GetAllColaboradores()
         {
