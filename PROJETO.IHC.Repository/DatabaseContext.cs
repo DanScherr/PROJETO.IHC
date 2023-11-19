@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PROJETO.IHC.Domain.Entities;
+using PROJETO.IHC.Repository.Mapping;
 
 namespace PROJETO.IHC.Repository
 {
@@ -13,7 +10,13 @@ namespace PROJETO.IHC.Repository
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
 
-        // entidades
+        public DbSet<Colaborador> Colaborador { get; set; }
+        public DbSet<Empresa> Empresa { get; set; }
+        public DbSet<Habilidade> Habilidade { get; set; }
+        public DbSet<Projeto> Projeto { get; set; }
+        public DbSet<Proposta> Proposta { get; set; }
+        public DbSet<QualificacaoColaborador> QualificacaoColaborador { get; set; }
+        public DbSet<QualificacaoProposta> QualificacaoProposta { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -22,7 +25,13 @@ namespace PROJETO.IHC.Repository
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // model building das entities
+            modelBuilder.Entity<Colaborador>(new ColaboradorMap().Configure);
+            modelBuilder.Entity<Empresa>(new EmpresaMap().Configure);
+            modelBuilder.Entity<Habilidade>(new HabilidadeMap().Configure);
+            modelBuilder.Entity<Projeto>(new ProjetoMap().Configure);
+            modelBuilder.Entity<Proposta>(new PropostaMap().Configure);
+            modelBuilder.Entity<QualificacaoColaborador>(new QualificacaoColaboradorMap().Configure);
+            modelBuilder.Entity<QualificacaoProposta>(new QualificacaoPropostaMap().Configure);
 
             base.OnModelCreating(modelBuilder);
 
