@@ -2,7 +2,7 @@
 
 namespace PROJETO.IHC.Domain.Interfaces.Repositories
 {
-    internal interface IEnderecoRepository : IRepositoryBase<Endereco>
+    public interface IEnderecoRepository : IRepositoryBase<Endereco>
     {
     }
 }
