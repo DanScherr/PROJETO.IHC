@@ -17,27 +17,44 @@ namespace PROJETO.IHC.Repository.Repositories
 
         public T ObterPorId(int id, bool asNoTracking = true)
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = _dbSet;
+            if (asNoTracking)
+                query = query.AsNoTracking();
+
+            return query.FirstOrDefault(x => x.Id == id);
         }
 
         public IList<T> ObterTodos()
         {
-            throw new NotImplementedException();
+            return _dbSet.ToList();
         }
 
         public void Inserir(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Add(entity);
+            _context.SaveChanges();
         }
 
         public void Alterar(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Update(entity);
+            _context.SaveChanges();
         }
 
         public bool Deletar(int id)
         {
-            throw new NotImplementedException();
+            var entity = this.ObterPorId(id);
+
+            if (entity == null && entity.Ativo)
+            {
+                entity.Ativo = false;
+                _dbSet.Update(entity);
+                _context.SaveChanges();
+
+                return true;
+            }
+
+            return false;
         }
     }
 }
