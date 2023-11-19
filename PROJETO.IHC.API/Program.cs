@@ -14,10 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling =  ReferenceLoopHandling.Ignore);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
-{
-    options.SwaggerDoc("V1", new OpenApiInfo { Title = "PROJETO IHC API", Version = "v1" });
-});
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer("connection string"));
 
@@ -43,7 +40,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "PROJETO.IHC.API V1"));
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
