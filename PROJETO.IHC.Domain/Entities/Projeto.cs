@@ -23,7 +23,7 @@
             this.Cidade = cidade;
             this.UF = uF;
             this.CEP = cEP;
-            this.IdEmpresa = IdEmpresa;
+            this.IdEmpresa = idEmpresa;
         }
 
         public string NomeProjeto { get; set; }
