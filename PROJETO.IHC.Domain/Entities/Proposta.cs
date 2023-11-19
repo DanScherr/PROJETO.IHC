@@ -6,7 +6,15 @@ namespace PROJETO.IHC.Domain.Entities
     {
         public Proposta() { }
 
-        public Proposta(int id, string nomeProposta, string descricaoProposta, DateTime dtInicio, DateTime dtFim, decimal valorProposta, EStatusProposta statusProposta) : base(id)
+        public Proposta(int id, 
+                        string nomeProposta, 
+                        string descricaoProposta, 
+                        DateTime dtInicio, 
+                        DateTime dtFim, 
+                        decimal valorProposta, 
+                        EStatusProposta statusProposta,
+                        int idColaborador,
+                        int idProjeto) : base(id)
         {
             this.NomeProposta = nomeProposta;
             this.DescricaoProposta = descricaoProposta;
@@ -14,6 +22,8 @@ namespace PROJETO.IHC.Domain.Entities
             this.DtFim = dtFim;
             this.ValorProsposta = valorProposta;
             this.StatusProposta = statusProposta;
+            this.IdColaborador = idColaborador;
+            this.IdProjeto = idProjeto;
         }
 
         public string NomeProposta { get; set; }
@@ -27,6 +37,10 @@ namespace PROJETO.IHC.Domain.Entities
         public decimal ValorProsposta { get; set; }
 
         public EStatusProposta StatusProposta { get; set; }
+
+        public int IdColaborador { get; set; }
+
+        public int IdProjeto { get; set; }
 
 
         public virtual ICollection<QualificacaoProposta> QualificacaoPropostas { get; set; }

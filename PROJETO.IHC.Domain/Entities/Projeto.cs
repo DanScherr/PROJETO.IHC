@@ -12,7 +12,8 @@
                        string bairro, 
                        string cidade, 
                        string uF, 
-                       string cEP) : base(id)
+                       string cEP,
+                       int idEmpresa) : base(id)
         {
             this.NomeProjeto = nomeProjeto;
             this.DescricaoProjeto = descricaoProjeto;
@@ -22,6 +23,7 @@
             this.Cidade = cidade;
             this.UF = uF;
             this.CEP = cEP;
+            this.IdEmpresa = IdEmpresa;
         }
 
         public string NomeProjeto { get; set; }
@@ -40,6 +42,7 @@
 
         public string CEP { get; set; }
 
+        public int IdEmpresa { get; set; }
 
         public virtual ICollection<Proposta> Propostas { get; set; }
 
