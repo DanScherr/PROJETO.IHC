@@ -1,18 +1,14 @@
-﻿using PROJETO.IHC.Domain.Enum;
-
-namespace PROJETO.IHC.Domain.DTOs.Colaborador
+﻿namespace PROJETO.IHC.Domain.DTOs.Empresa
 {
-    public class ColaboradorOutputDTO
+    internal class EmpresaUpdateDTO
     {
         public int Id { get; set; }
 
-        public string Nome { get; set; }
+        public string NomeEmpresa { get; set; }
 
-        public DateTime DtNascimento { get; set; }
+        public string DocumentoCNPJ { get; set; }
 
-        public ESexo Sexo { get; set; }
-
-        public string DocumentoCPF { get; set; }
+        public string SiteEmpresa { get; set; }
 
         public string Telefone { get; set; }
 
@@ -29,7 +25,5 @@ namespace PROJETO.IHC.Domain.DTOs.Colaborador
         public string UF { get; set; }
 
         public string CEP { get; set; }
-
-        public bool Ativo { get; set; }
     }
 }

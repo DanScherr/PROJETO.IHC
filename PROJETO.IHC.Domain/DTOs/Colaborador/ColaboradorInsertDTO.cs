@@ -2,10 +2,8 @@
 
 namespace PROJETO.IHC.Domain.DTOs.Colaborador
 {
-    public class ColaboradorOutputDTO
+    public class ColaboradorInsertDTO
     {
-        public int Id { get; set; }
-
         public string Nome { get; set; }
 
         public DateTime DtNascimento { get; set; }
@@ -29,7 +27,5 @@ namespace PROJETO.IHC.Domain.DTOs.Colaborador
         public string UF { get; set; }
 
         public string CEP { get; set; }
-
-        public bool Ativo { get; set; }
     }
 }
