@@ -1,6 +1,6 @@
 ﻿namespace PROJETO.IHC.Domain.DTOs.Empresa
 {
-    internal class EmpresaUpdateDTO
+    public class EmpresaUpdateDTO
     {
         public int Id { get; set; }
 
