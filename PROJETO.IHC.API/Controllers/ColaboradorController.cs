@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PROJETO.IHC.Domain.DTOs.Colaborador;
 using PROJETO.IHC.Domain.Interfaces.Services;
 using System.Net;
 
@@ -40,6 +41,51 @@ namespace PROJETO.IHC.API.Controllers
                 var listColaboradores = _colaboradorService.GetAllColaboradores();
 
                 return Ok(listColaboradores);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public IActionResult SaveColaborador([FromBody] ColaboradorInsertDTO colaboradorInsertDTO)
+        {
+            try
+            {
+                var colaboradorOutputDTO = _colaboradorService.InsertColaborador(colaboradorInsertDTO);
+
+                return Ok(colaboradorOutputDTO);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+
+        [HttpPut]
+        public IActionResult UpdateColaborador([FromBody] ColaboradorUpdateDTO colaboradorUpdateDTO)
+        {
+            try
+            {
+                var colaboradorOutputDTO = _colaboradorService.UpdateColaborador(colaboradorUpdateDTO);
+
+                return Ok(colaboradorOutputDTO);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
+
+        [HttpDelete("{id:int}")]
+        public IActionResult DeleteColaborador(int id)
+        {
+            try
+            {
+                var isDelete = _colaboradorService.DeleteColaborador(id);
+
+                return Ok(isDelete);
             }
             catch (Exception ex)
             {
