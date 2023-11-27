@@ -20,7 +20,7 @@ namespace PROJETO.IHC.Repository
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"string de conexão");
+            optionsBuilder.UseSqlServer(@"Server=tcp:server-db-intermitente.database.windows.net,1433;Initial Catalog=db_intermitente;Persist Security Info=False;User ID=admin-intermitente;Password=App-ihc1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
