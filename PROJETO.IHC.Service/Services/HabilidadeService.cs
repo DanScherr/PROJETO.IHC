@@ -1,4 +1,6 @@
-﻿using PROJETO.IHC.Domain.DTOs.Habilidade;
+﻿using PROJETO.IHC.Domain.DTOs.Colaborador;
+using PROJETO.IHC.Domain.DTOs.Habilidade;
+using PROJETO.IHC.Domain.Entities;
 using PROJETO.IHC.Domain.Interfaces.Repositories;
 using PROJETO.IHC.Domain.Interfaces.Services;
 
@@ -20,12 +22,42 @@ namespace PROJETO.IHC.Service.Services
 
         public List<HabilidadeOutputDTO> GetAllHabilidades()
         {
-            throw new NotImplementedException();
+            var listColaboradores = _habilidadeRepository.ObterTodos();
+
+            return listColaboradores.Select(x =>
+            {
+                return new HabilidadeOutputDTO()
+                {
+                    Id = x.Id,
+                    NomeHabilidade = x.NomeHabilidade,
+                    DescricaoHabilidade = x.DescricaoHabilidade,
+                    ExeperienciaHabilidade = x.ExeperienciaHabilidade,
+                    Ativo = x.Ativo 
+                };
+            }).ToList();
         }
 
         public HabilidadeOutputDTO InsertHabilidade(HabilidadeInsertDTO habilidadeInsertDTO)
         {
-            throw new NotImplementedException();
+            var habilidade = new Habilidade()
+            {
+                NomeHabilidade = habilidadeInsertDTO.NomeHabilidade,
+                DescricaoHabilidade = habilidadeInsertDTO.DescricaoHabilidade,
+                ExeperienciaHabilidade = habilidadeInsertDTO.ExeperienciaHabilidade
+            };
+
+            habilidade.Ativar();
+
+            _habilidadeRepository.Inserir(habilidade);
+
+            return new HabilidadeOutputDTO()
+            {
+                Id = habilidade.Id,
+                NomeHabilidade = habilidade.NomeHabilidade,
+                DescricaoHabilidade = habilidade.DescricaoHabilidade,
+                ExeperienciaHabilidade = habilidade.ExeperienciaHabilidade,
+                Ativo = habilidade.Ativo
+            };
         }
 
         public HabilidadeOutputDTO UpdateHabilidade(HabilidadeUpdateDTO habilidadeUpdateDTO)
