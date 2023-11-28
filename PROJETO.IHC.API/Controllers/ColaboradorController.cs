@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using PROJETO.IHC.Domain.DTOs.Colaborador;
 using PROJETO.IHC.Domain.Interfaces.Services;
 using System.Net;
@@ -26,6 +27,14 @@ namespace PROJETO.IHC.API.Controllers
                 var colaborador = _colaboradorService.GetColaboradorById(id);
 
                 return Ok(colaborador);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (KeyNotFoundException ex)
+            { 
+                return BadRequest(new { message = ex.Message });
             }
             catch (Exception ex)
             {
@@ -57,6 +66,10 @@ namespace PROJETO.IHC.API.Controllers
 
                 return Ok(colaboradorOutputDTO);
             }
+            catch (NullReferenceException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
             catch (Exception ex)
             {
                 return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
@@ -72,6 +85,14 @@ namespace PROJETO.IHC.API.Controllers
 
                 return Ok(colaboradorOutputDTO);
             }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
             catch (Exception ex)
             {
                 return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
@@ -86,6 +107,14 @@ namespace PROJETO.IHC.API.Controllers
                 var isDelete = _colaboradorService.DeleteColaborador(id);
 
                 return Ok(isDelete);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return BadRequest(new { message = ex.Message });
             }
             catch (Exception ex)
             {

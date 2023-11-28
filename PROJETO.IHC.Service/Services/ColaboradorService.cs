@@ -1,4 +1,5 @@
 ﻿using PROJETO.IHC.Domain.DTOs.Colaborador;
+using PROJETO.IHC.Domain.Entities;
 using PROJETO.IHC.Domain.Interfaces.Repositories;
 using PROJETO.IHC.Domain.Interfaces.Services;
 
@@ -15,7 +16,31 @@ namespace PROJETO.IHC.Service.Services
 
         public ColaboradorOutputDTO GetColaboradorById(int id)
         {
-            throw new NotImplementedException();
+            if (id < 1)
+                throw new ArgumentException($"Id: {id} está inválido");
+
+            var colaborador = _colaboradorRepository.ObterPorId(id);
+
+            if (colaborador == null || !colaborador.Ativo)
+                throw new KeyNotFoundException($"Colaborador com Id: {id} não encontrado");
+
+            return new ColaboradorOutputDTO()
+            {
+                Id = colaborador.Id,
+                Nome = colaborador.Nome,
+                DtNascimento = colaborador.DtNascimento,
+                Sexo = colaborador.Sexo,
+                DocumentoCPF = colaborador.DocumentoCPF,
+                Telefone = colaborador.Telefone,
+                Email = colaborador.Email,
+                Logradouro = colaborador.Logradouro,
+                Numero = colaborador.Numero,
+                Bairro = colaborador.Bairro,
+                Cidade = colaborador.Cidade,
+                UF = colaborador.UF,
+                CEP = colaborador.CEP,
+                Ativo = colaborador.Ativo
+            };
         }
 
         public List<ColaboradorOutputDTO> GetAllColaboradores()
@@ -46,17 +71,101 @@ namespace PROJETO.IHC.Service.Services
 
         public ColaboradorOutputDTO InsertColaborador(ColaboradorInsertDTO colaboradorInsertDTO)
         {
-            throw new NotImplementedException();
+            var colaborador = new Colaborador()
+            {
+                Nome = colaboradorInsertDTO.Nome,
+                DocumentoCPF = colaboradorInsertDTO.DocumentoCPF,
+                DtNascimento = colaboradorInsertDTO.DtNascimento,
+                Sexo = colaboradorInsertDTO.Sexo,
+                Email = colaboradorInsertDTO.Email,
+                Telefone = colaboradorInsertDTO.Telefone,
+                Logradouro = colaboradorInsertDTO.Logradouro,
+                Numero = colaboradorInsertDTO.Numero,
+                Bairro = colaboradorInsertDTO.Bairro,
+                Cidade = colaboradorInsertDTO.Cidade,
+                UF = colaboradorInsertDTO.UF,
+                CEP = colaboradorInsertDTO.CEP
+            };
+
+            colaborador.Ativar();
+
+            _colaboradorRepository.Inserir(colaborador);
+
+            if (colaborador.Id == 0)
+                throw new NullReferenceException("Falha ao inserir Colaborador");
+
+            return new ColaboradorOutputDTO()
+            {
+                Id = colaborador.Id,
+                Nome = colaborador.Nome,
+                DocumentoCPF = colaborador.DocumentoCPF,
+                DtNascimento = colaborador.DtNascimento,
+                Sexo = colaborador.Sexo,
+                Email = colaborador.Email,
+                Telefone = colaborador.Telefone,
+                Logradouro = colaborador.Logradouro,
+                Numero = colaborador.Numero,
+                Bairro = colaborador.Bairro,
+                Cidade = colaborador.Cidade,
+                UF = colaborador.UF,
+                CEP = colaborador.CEP,
+                Ativo = colaborador.Ativo
+            };
         }
 
         public ColaboradorOutputDTO UpdateColaborador(ColaboradorUpdateDTO colaboradorUpdateDTO)
         {
-            throw new NotImplementedException();
+            this.GetColaboradorById(colaboradorUpdateDTO.Id);
+
+            var colaborador = new Colaborador()
+            {
+                Id = colaboradorUpdateDTO.Id,
+                Nome = colaboradorUpdateDTO.Nome,
+                DocumentoCPF = colaboradorUpdateDTO.DocumentoCPF,
+                DtNascimento = colaboradorUpdateDTO.DtNascimento,
+                Sexo = colaboradorUpdateDTO.Sexo,
+                Email = colaboradorUpdateDTO.Email,
+                Telefone = colaboradorUpdateDTO.Telefone,
+                Logradouro = colaboradorUpdateDTO.Logradouro,
+                Numero = colaboradorUpdateDTO.Numero,
+                Bairro = colaboradorUpdateDTO.Bairro,
+                Cidade = colaboradorUpdateDTO.Cidade,
+                UF = colaboradorUpdateDTO.UF,
+                CEP = colaboradorUpdateDTO.CEP
+            };
+
+            _colaboradorRepository.Alterar(colaborador);
+
+            return new ColaboradorOutputDTO()
+            {
+                Id = colaborador.Id,
+                Nome = colaborador.Nome,
+                DocumentoCPF = colaborador.DocumentoCPF,
+                DtNascimento = colaborador.DtNascimento,
+                Sexo = colaborador.Sexo,
+                Email = colaborador.Email,
+                Telefone = colaborador.Telefone,
+                Logradouro = colaborador.Logradouro,
+                Numero = colaborador.Numero,
+                Bairro = colaborador.Bairro,
+                Cidade = colaborador.Cidade,
+                UF = colaborador.UF,
+                CEP = colaborador.CEP,
+                Ativo = colaborador.Ativo
+            };
         }
 
         public bool DeleteColaborador(int id)
         {
-            throw new NotImplementedException();
+            if (id < 1)
+                throw new ArgumentException($"Id: {id} está inválido");
+
+            var isDelete = _colaboradorRepository.Deletar(id);
+
+            if (!isDelete)
+                throw new KeyNotFoundException($"Colaborador com Id: {id} não encontrada");
+
+            return isDelete;
         }
     }
 }
