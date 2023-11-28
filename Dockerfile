@@ -13,7 +13,7 @@ COPY ["PROJETO.IHC.Service/PROJETO.IHC.Service.csproj", "PROJETO.IHC.Service/"]
 RUN dotnet restore "PROJETO.IHC.API/PROJETO.IHC.API.csproj"
 COPY . .
 WORKDIR "/src/PROJETO.IHC.API"
-RUN dotnet build "PROJETO.IHC.API.csproj" -c Release -o /app/build
+RUN dotnet build "./PROJETO.IHC.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "PROJETO.IHC.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
