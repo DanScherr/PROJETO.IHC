@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_90d78649693247d2ae28031720cc3b56 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_c411da80e32e47b499f7a0348c590672 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_6c20ed9c1041411c9107cab62199aba7 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_c2f1f452a0ca4ad586aaa8f4d088964f }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_90d78649693247d2ae28031720cc3b56 }}/intermitente-img:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_6c20ed9c1041411c9107cab62199aba7 }}/danielschei/intermitente-img:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'intermitente'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_cc0b67db688e41b0995dd4833eedeaaa }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_90d78649693247d2ae28031720cc3b56 }}/intermitente-img:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a396ff59028c46e080a2c3ded961c45a }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_6c20ed9c1041411c9107cab62199aba7 }}/danielschei/intermitente-img:${{ github.sha }}'
