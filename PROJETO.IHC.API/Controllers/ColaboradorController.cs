@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using PROJETO.IHC.Domain.DTOs.Colaborador;
 using PROJETO.IHC.Domain.Interfaces.Services;
 using System.Net;
