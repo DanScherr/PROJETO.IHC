@@ -1,5 +1,4 @@
-﻿using PROJETO.IHC.Domain.DTOs.Colaborador;
-using PROJETO.IHC.Domain.DTOs.Projeto;
+﻿using PROJETO.IHC.Domain.DTOs.Projeto;
 using PROJETO.IHC.Domain.Entities;
 using PROJETO.IHC.Domain.Interfaces.Repositories;
 using PROJETO.IHC.Domain.Interfaces.Services;
