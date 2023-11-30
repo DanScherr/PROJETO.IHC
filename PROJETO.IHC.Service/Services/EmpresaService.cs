@@ -9,12 +9,12 @@ namespace PROJETO.IHC.Service.Services
     public class EmpresaService : IEmpresaService
     {
         private readonly IEmpresaRepository _empresaRepository;
-        private readonly IColaboradorService _colaboradorService;
+        private readonly IColaboradorRepository _colaboradorRepository;
 
-        public EmpresaService(IEmpresaRepository empresaRepository, IColaboradorService colaboradorService)
+        public EmpresaService(IEmpresaRepository empresaRepository, IColaboradorRepository colaboradorRepository)
         {
             _empresaRepository = empresaRepository;
-            _colaboradorService = colaboradorService;
+            _colaboradorRepository = colaboradorRepository;
         }
 
         public EmpresaOutputDTO GetEmpresaById(int id)
@@ -88,7 +88,7 @@ namespace PROJETO.IHC.Service.Services
                 CEP = empresaInsertDTO.CEP
             };
 
-            if (this.ValidaEmpresaEmailExistente(empresa.Email) && _colaboradorService.ValidaColaboradorEmailExistente(empresa.Email))
+            if (this.ValidaEmpresaEmailExistente(empresa.Email) || this.ValidaColaboradorEmailExistente(empresa.Email))
                 throw new ArgumentException("Email informado já existente!");
 
             empresa.Ativar();
@@ -138,7 +138,7 @@ namespace PROJETO.IHC.Service.Services
             };
 
             if (empresaOutputDTO.Email.ToUpper() != empresa.Email.ToUpper())
-                if (this.ValidaEmpresaEmailExistente(empresa.Email) && _colaboradorService.ValidaColaboradorEmailExistente(empresa.Email))
+                if (this.ValidaEmpresaEmailExistente(empresa.Email) || this.ValidaColaboradorEmailExistente(empresa.Email))
                     throw new ArgumentException("Email informado já existente!");
 
             _empresaRepository.Alterar(empresa);
@@ -187,7 +187,13 @@ namespace PROJETO.IHC.Service.Services
         public bool ValidaEmpresaEmailExistente(string email)
         {
             var empresa = _empresaRepository.GetEmpresaByEmail(email);
-            return empresa == null;
+            return empresa != null;
+        }
+
+        public bool ValidaColaboradorEmailExistente(string email)
+        {
+            var colaborador = _colaboradorRepository.GetColaboradorByEmail(email);
+            return colaborador != null;
         }
     }
 }
