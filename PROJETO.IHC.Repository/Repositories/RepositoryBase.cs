@@ -47,7 +47,7 @@ namespace PROJETO.IHC.Repository.Repositories
 
             if (entity == null && entity.Ativo)
             {
-                entity.Ativo = false;
+                entity.Desativar();
                 _dbSet.Update(entity);
                 _context.SaveChanges();
 

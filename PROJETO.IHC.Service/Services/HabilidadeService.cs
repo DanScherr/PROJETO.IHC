@@ -1,5 +1,4 @@
-﻿using PROJETO.IHC.Domain.DTOs.Colaborador;
-using PROJETO.IHC.Domain.DTOs.Habilidade;
+﻿using PROJETO.IHC.Domain.DTOs.Habilidade;
 using PROJETO.IHC.Domain.Entities;
 using PROJETO.IHC.Domain.Interfaces.Repositories;
 using PROJETO.IHC.Domain.Interfaces.Services;
@@ -17,7 +16,22 @@ namespace PROJETO.IHC.Service.Services
 
         public HabilidadeOutputDTO GetHabilidadeById(int id)
         {
-            throw new NotImplementedException();
+            if (id < 1)
+                throw new ArgumentException($"Id: {id} está inválido");
+
+            var habilidade = _habilidadeRepository.ObterPorId(id);
+
+            if (habilidade == null || !habilidade.Ativo)
+                throw new KeyNotFoundException($"Habilidade com Id: {id} não encontrada");
+
+            return new HabilidadeOutputDTO()
+            {
+                Id = id,
+                NomeHabilidade = habilidade.NomeHabilidade,
+                DescricaoHabilidade = habilidade.DescricaoHabilidade,
+                ExeperienciaHabilidade = habilidade.ExeperienciaHabilidade,
+                Ativo = habilidade.Ativo
+            };
         }
 
         public List<HabilidadeOutputDTO> GetAllHabilidades()
@@ -50,6 +64,9 @@ namespace PROJETO.IHC.Service.Services
 
             _habilidadeRepository.Inserir(habilidade);
 
+            if (habilidade.Id == 0)
+                throw new NullReferenceException("Falha ao inserir Habilidade");
+
             return new HabilidadeOutputDTO()
             {
                 Id = habilidade.Id,
@@ -62,12 +79,39 @@ namespace PROJETO.IHC.Service.Services
 
         public HabilidadeOutputDTO UpdateHabilidade(HabilidadeUpdateDTO habilidadeUpdateDTO)
         {
-            throw new NotImplementedException();
+            this.GetHabilidadeById(habilidadeUpdateDTO.Id);
+
+            var habilidade = new Habilidade()
+            {
+                Id = habilidadeUpdateDTO.Id,
+                NomeHabilidade = habilidadeUpdateDTO.NomeHabilidade,
+                DescricaoHabilidade = habilidadeUpdateDTO.DescricaoHabilidade,
+                ExeperienciaHabilidade = habilidadeUpdateDTO.ExeperienciaHabilidade
+            };
+
+            _habilidadeRepository.Alterar(habilidade);
+
+            return new HabilidadeOutputDTO()
+            {
+                Id = habilidade.Id,
+                NomeHabilidade = habilidade.NomeHabilidade,
+                DescricaoHabilidade = habilidade.DescricaoHabilidade,
+                ExeperienciaHabilidade = habilidade.ExeperienciaHabilidade,
+                Ativo = habilidade.Ativo
+            };
         }
 
         public bool DeleteHabilidade(int id)
         {
-            throw new NotImplementedException();
+            if (id < 1)
+                throw new ArgumentException($"Id: {id} está inválido");
+
+            var isDelete = _habilidadeRepository.Deletar(id);
+
+            if (!isDelete)
+                throw new KeyNotFoundException($"Habilidade com Id: {id} não encontrada");
+
+            return isDelete;
         }
     }
 }

@@ -27,6 +27,14 @@ namespace PROJETO.IHC.API.Controllers
 
                 return Ok(habilidade);
             }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
             catch (Exception ex)
             {
                 return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
@@ -57,6 +65,10 @@ namespace PROJETO.IHC.API.Controllers
 
                 return Ok(habilidadeOutputDTO);
             }
+            catch (NullReferenceException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
             catch (Exception ex)
             {
                 return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
@@ -72,6 +84,14 @@ namespace PROJETO.IHC.API.Controllers
 
                 return Ok(habilidadeOutputDTO);
             }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
             catch (Exception ex)
             {
                 return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
@@ -86,6 +106,14 @@ namespace PROJETO.IHC.API.Controllers
                 var isDelete = _habilidadeService.DeleteHabilidade(id);
 
                 return Ok(isDelete);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return BadRequest(new { message = ex.Message });
             }
             catch (Exception ex)
             {
