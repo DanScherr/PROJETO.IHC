@@ -9,5 +9,6 @@ namespace PROJETO.IHC.Domain.Interfaces.Services
         EmpresaOutputDTO InsertEmpresa(EmpresaInsertDTO empresaInsertDTO);
         EmpresaOutputDTO UpdateEmpresa(EmpresaUpdateDTO empresaUpdateDTO);
         bool DeleteEmpresa(int id);
+        bool LoginEmpresa(EmpresaLoginDTO empresaLoginDTO);
     }
 }

@@ -9,5 +9,6 @@ namespace PROJETO.IHC.Domain.Interfaces.Services
         ColaboradorOutputDTO InsertColaborador(ColaboradorInsertDTO colaboradorInsertDTO);
         ColaboradorOutputDTO UpdateColaborador(ColaboradorUpdateDTO colaboradorUpdateDTO);
         bool DeleteColaborador(int id);
+        bool LoginColaborador(ColaboradorLoginDTO empresaLoginDTO);
     }
 }
