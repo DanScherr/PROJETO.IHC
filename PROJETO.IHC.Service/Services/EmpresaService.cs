@@ -161,5 +161,10 @@ namespace PROJETO.IHC.Service.Services
 
             return isDelete;
         }
+
+        public bool LoginEmpresa(EmpresaLoginDTO empresaLoginDTO)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
