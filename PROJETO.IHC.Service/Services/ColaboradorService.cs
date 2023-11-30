@@ -1,4 +1,5 @@
-﻿using PROJETO.IHC.Domain.DTOs.Colaborador;
+﻿using PROJETO.IHC.Domain.DTOs;
+using PROJETO.IHC.Domain.DTOs.Colaborador;
 using PROJETO.IHC.Domain.Entities;
 using PROJETO.IHC.Domain.Interfaces.Repositories;
 using PROJETO.IHC.Domain.Interfaces.Services;
@@ -170,12 +171,12 @@ namespace PROJETO.IHC.Service.Services
             return isDelete;
         }
 
-        public int LoginColaborador(ColaboradorLoginDTO colaboradorLoginDTO)
+        public int LoginColaborador(LoginDTO loginDTO)
         {
-            var colaborador = _colaboradorRepository.ColaboradorLogin(colaboradorLoginDTO.Email, colaboradorLoginDTO.Senha);
+            var colaborador = _colaboradorRepository.ColaboradorLogin(loginDTO.Email, loginDTO.Senha);
 
             if (colaborador == null)
-                throw new KeyNotFoundException("Colaborador não enconttado!");
+                return 0;
 
             return colaborador.Id;
         }

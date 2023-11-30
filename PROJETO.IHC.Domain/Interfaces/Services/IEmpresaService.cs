@@ -1,4 +1,5 @@
-﻿using PROJETO.IHC.Domain.DTOs.Empresa;
+﻿using PROJETO.IHC.Domain.DTOs;
+using PROJETO.IHC.Domain.DTOs.Empresa;
 
 namespace PROJETO.IHC.Domain.Interfaces.Services
 {
@@ -9,6 +10,6 @@ namespace PROJETO.IHC.Domain.Interfaces.Services
         EmpresaOutputDTO InsertEmpresa(EmpresaInsertDTO empresaInsertDTO);
         EmpresaOutputDTO UpdateEmpresa(EmpresaUpdateDTO empresaUpdateDTO);
         bool DeleteEmpresa(int id);
-        int LoginEmpresa(EmpresaLoginDTO empresaLoginDTO);
+        int LoginEmpresa(LoginDTO loginDTO);
     }
 }

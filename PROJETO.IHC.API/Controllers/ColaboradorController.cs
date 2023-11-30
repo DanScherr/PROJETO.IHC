@@ -120,24 +120,5 @@ namespace PROJETO.IHC.API.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
             }
         }
-
-        [HttpPost]
-        public IActionResult LoginColaborador([FromBody] ColaboradorLoginDTO colaboradorLoginDTO)
-        {
-            try
-            {
-                var idColaborador = _colaboradorService.LoginColaborador(colaboradorLoginDTO);
-
-                return Ok(new { id = idColaborador });
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
-            }
-        }
     }
 }

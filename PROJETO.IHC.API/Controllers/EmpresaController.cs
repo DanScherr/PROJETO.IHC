@@ -120,24 +120,5 @@ namespace PROJETO.IHC.API.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
             }
         }
-
-        [HttpPost]
-        public IActionResult LoginEmpresa([FromBody] EmpresaLoginDTO empresaLoginDTO)
-        {
-            try
-            {
-                var idEmpresa = _empresaService.LoginEmpresa(empresaLoginDTO);
-
-                return Ok(new { id = idEmpresa });
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
-            }
-        }
     }
 }

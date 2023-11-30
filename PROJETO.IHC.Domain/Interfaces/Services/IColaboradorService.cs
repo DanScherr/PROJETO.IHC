@@ -1,4 +1,5 @@
-﻿using PROJETO.IHC.Domain.DTOs.Colaborador;
+﻿using PROJETO.IHC.Domain.DTOs;
+using PROJETO.IHC.Domain.DTOs.Colaborador;
 
 namespace PROJETO.IHC.Domain.Interfaces.Services
 {
@@ -9,6 +10,6 @@ namespace PROJETO.IHC.Domain.Interfaces.Services
         ColaboradorOutputDTO InsertColaborador(ColaboradorInsertDTO colaboradorInsertDTO);
         ColaboradorOutputDTO UpdateColaborador(ColaboradorUpdateDTO colaboradorUpdateDTO);
         bool DeleteColaborador(int id);
-        int LoginColaborador(ColaboradorLoginDTO empresaLoginDTO);
+        int LoginColaborador(LoginDTO loginDTO);
     }
 }

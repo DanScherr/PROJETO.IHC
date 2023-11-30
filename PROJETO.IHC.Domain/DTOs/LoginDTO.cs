@@ -1,6 +1,6 @@
-﻿namespace PROJETO.IHC.Domain.DTOs.Empresa
+﻿namespace PROJETO.IHC.Domain.DTOs
 {
-    public class EmpresaLoginDTO
+    public class LoginDTO
     {
         public string Email { get; set; }
 

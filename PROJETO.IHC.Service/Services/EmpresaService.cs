@@ -1,4 +1,5 @@
-﻿using PROJETO.IHC.Domain.DTOs.Empresa;
+﻿using PROJETO.IHC.Domain.DTOs;
+using PROJETO.IHC.Domain.DTOs.Empresa;
 using PROJETO.IHC.Domain.Entities;
 using PROJETO.IHC.Domain.Interfaces.Repositories;
 using PROJETO.IHC.Domain.Interfaces.Services;
@@ -164,12 +165,12 @@ namespace PROJETO.IHC.Service.Services
             return isDelete;
         }
 
-        public int LoginEmpresa(EmpresaLoginDTO empresaLoginDTO)
+        public int LoginEmpresa(LoginDTO loginDTO)
         {
-            var empresa = _empresaRepository.LoginEmpresa(empresaLoginDTO.Email, empresaLoginDTO.Senha);
+            var empresa = _empresaRepository.LoginEmpresa(loginDTO.Email, loginDTO.Senha);
 
             if (empresa == null)
-                throw new KeyNotFoundException("Empresa não enconttado!");
+                return 0;
 
             return empresa.Id;
         }
