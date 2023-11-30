@@ -120,5 +120,20 @@ namespace PROJETO.IHC.API.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
             }
         }
+
+        [HttpPost]
+        public IActionResult LoginEmpresa([FromBody] EmpresaLoginDTO empresaLoginDTO)
+        {
+            try
+            {
+                var isAccess = _empresaService.LoginEmpresa(empresaLoginDTO);
+
+                return Ok(isAccess);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
+        }
     }
 }
