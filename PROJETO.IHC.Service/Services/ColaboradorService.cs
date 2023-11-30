@@ -142,6 +142,8 @@ namespace PROJETO.IHC.Service.Services
                 CEP = colaboradorUpdateDTO.CEP
             };
 
+            colaborador.Ativar();
+
             if (colaboradorOutputDTO.Email.ToUpper() != colaborador.Email.ToUpper())
                 if (this.ValidaColaboradorEmailExistente(colaborador.Email) || this.ValidaEmpresaEmailExistente(colaborador.Email))
                     throw new ArgumentException("Email informado já existente!");

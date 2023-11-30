@@ -114,6 +114,8 @@ namespace PROJETO.IHC.Service.Services
                 IdProjeto = propostaUpdateDTO.IdProjeto
             };
 
+            proposta.Ativar();
+
             _propostaRepository.Alterar(proposta);
 
             return new PropostaOutputDTO()

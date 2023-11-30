@@ -89,6 +89,8 @@ namespace PROJETO.IHC.Service.Services
                 ExeperienciaHabilidade = habilidadeUpdateDTO.ExeperienciaHabilidade
             };
 
+            habilidade.Ativar();
+
             _habilidadeRepository.Alterar(habilidade);
 
             return new HabilidadeOutputDTO()

@@ -119,6 +119,8 @@ namespace PROJETO.IHC.Service.Services
                 CEP = projetoUpdateDTO.CEP
             };
 
+            projeto.Ativar();
+
             _projetoRepository.Alterar(projeto);
 
             return new ProjetoOutputDTO()

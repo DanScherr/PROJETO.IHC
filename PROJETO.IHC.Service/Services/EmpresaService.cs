@@ -141,6 +141,8 @@ namespace PROJETO.IHC.Service.Services
                 if (this.ValidaEmpresaEmailExistente(empresa.Email) || this.ValidaColaboradorEmailExistente(empresa.Email))
                     throw new ArgumentException("Email informado já existente!");
 
+            empresa.Ativar();
+
             _empresaRepository.Alterar(empresa);
 
             return new EmpresaOutputDTO()
