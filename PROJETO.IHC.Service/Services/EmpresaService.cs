@@ -9,10 +9,12 @@ namespace PROJETO.IHC.Service.Services
     public class EmpresaService : IEmpresaService
     {
         private readonly IEmpresaRepository _empresaRepository;
+        private readonly IColaboradorService _colaboradorService;
 
-        public EmpresaService(IEmpresaRepository empresaRepository)
+        public EmpresaService(IEmpresaRepository empresaRepository, IColaboradorService colaboradorService)
         {
             _empresaRepository = empresaRepository;
+            _colaboradorService = colaboradorService;
         }
 
         public EmpresaOutputDTO GetEmpresaById(int id)
@@ -86,6 +88,9 @@ namespace PROJETO.IHC.Service.Services
                 CEP = empresaInsertDTO.CEP
             };
 
+            if (this.ValidaEmpresaEmailExistente(empresa.Email) && _colaboradorService.ValidaColaboradorEmailExistente(empresa.Email))
+                throw new ArgumentException("Email informado já existente!");
+
             empresa.Ativar();
 
             _empresaRepository.Inserir(empresa);
@@ -113,11 +118,11 @@ namespace PROJETO.IHC.Service.Services
 
         public EmpresaOutputDTO UpdateEmpresa(EmpresaUpdateDTO empresaUpdateDTO)
         {
-            this.GetEmpresaById(empresaUpdateDTO.Id);
+            var empresaOutputDTO = this.GetEmpresaById(empresaUpdateDTO.Id);
 
             var empresa = new Empresa()
             {
-                Id= empresaUpdateDTO.Id,
+                Id = empresaUpdateDTO.Id,
                 NomeEmpresa = empresaUpdateDTO.NomeEmpresa,
                 DocumentoCNPJ = empresaUpdateDTO.DocumentoCNPJ,
                 SiteEmpresa = empresaUpdateDTO.SiteEmpresa,
@@ -131,6 +136,10 @@ namespace PROJETO.IHC.Service.Services
                 UF = empresaUpdateDTO.UF,
                 CEP = empresaUpdateDTO.CEP
             };
+
+            if (empresaOutputDTO.Email.ToUpper() != empresa.Email.ToUpper())
+                if (this.ValidaEmpresaEmailExistente(empresa.Email) && _colaboradorService.ValidaColaboradorEmailExistente(empresa.Email))
+                    throw new ArgumentException("Email informado já existente!");
 
             _empresaRepository.Alterar(empresa);
 
@@ -173,6 +182,12 @@ namespace PROJETO.IHC.Service.Services
                 return 0;
 
             return empresa.Id;
+        }
+
+        public bool ValidaEmpresaEmailExistente(string email)
+        {
+            var empresa = _empresaRepository.GetEmpresaByEmail(email);
+            return empresa == null;
         }
     }
 }

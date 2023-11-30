@@ -11,5 +11,6 @@ namespace PROJETO.IHC.Domain.Interfaces.Services
         EmpresaOutputDTO UpdateEmpresa(EmpresaUpdateDTO empresaUpdateDTO);
         bool DeleteEmpresa(int id);
         int LoginEmpresa(LoginDTO loginDTO);
+        bool ValidaEmpresaEmailExistente(string email);
     }
 }

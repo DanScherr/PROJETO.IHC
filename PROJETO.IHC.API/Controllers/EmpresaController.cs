@@ -65,6 +65,10 @@ namespace PROJETO.IHC.API.Controllers
 
                 return Ok(empresaInsertDTO);
             }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
             catch (NullReferenceException ex)
             {
                 return BadRequest(new { message = ex.Message });

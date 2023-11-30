@@ -11,5 +11,6 @@ namespace PROJETO.IHC.Domain.Interfaces.Services
         ColaboradorOutputDTO UpdateColaborador(ColaboradorUpdateDTO colaboradorUpdateDTO);
         bool DeleteColaborador(int id);
         int LoginColaborador(LoginDTO loginDTO);
+        bool ValidaColaboradorEmailExistente(string email);
     }
 }

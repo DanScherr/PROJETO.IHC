@@ -5,5 +5,7 @@ namespace PROJETO.IHC.Domain.Interfaces.Repositories
     public interface IColaboradorRepository : IRepositoryBase<Colaborador>
     {
         Colaborador ColaboradorLogin(string email, string senha);
+
+        Colaborador GetColaboradorByEmail(string email);
     }
 }

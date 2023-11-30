@@ -11,5 +11,10 @@ namespace PROJETO.IHC.Repository.Repositories
         {
             return _dbSet.Where(x => x.Email.ToUpper() == email.ToUpper() && x.Senha == senha && x.Ativo).FirstOrDefault();
         }
+
+        public Colaborador GetColaboradorByEmail(string email)
+        {
+            return _dbSet.Where(x => x.Email.ToUpper() == email.ToUpper()).FirstOrDefault();
+        }
     }
 }
