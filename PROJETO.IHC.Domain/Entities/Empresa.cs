@@ -52,6 +52,8 @@
 
         public string CEP { get; set; }
 
+        public string Senha { get; set; }
+
 
         public virtual ICollection<Projeto> Projetos { get; set; }
     }

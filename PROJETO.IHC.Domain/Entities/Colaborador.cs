@@ -58,6 +58,8 @@ namespace PROJETO.IHC.Domain.Entities
 
         public string CEP { get; set; }
 
+        public string Senha { get; set; }
+
 
         public virtual ICollection<Proposta> Propostas { get; set; }
 

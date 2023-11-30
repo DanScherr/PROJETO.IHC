@@ -28,7 +28,7 @@ namespace PROJETO.IHC.Service.Services
             {
                 Id = colaborador.Id,
                 Nome = colaborador.Nome,
-                DtNascimento = colaborador.DtNascimento,
+                DtNascimento = colaborador.DtNascimento.ToString(),
                 Sexo = colaborador.Sexo,
                 DocumentoCPF = colaborador.DocumentoCPF,
                 Telefone = colaborador.Telefone,
@@ -53,7 +53,7 @@ namespace PROJETO.IHC.Service.Services
                 {
                     Id = x.Id,
                     Nome = x.Nome,
-                    DtNascimento = x.DtNascimento,
+                    DtNascimento = x.DtNascimento.ToString(),
                     Sexo = x.Sexo,
                     DocumentoCPF = x.DocumentoCPF,
                     Telefone = x.Telefone,
@@ -75,7 +75,7 @@ namespace PROJETO.IHC.Service.Services
             {
                 Nome = colaboradorInsertDTO.Nome,
                 DocumentoCPF = colaboradorInsertDTO.DocumentoCPF,
-                DtNascimento = colaboradorInsertDTO.DtNascimento,
+                DtNascimento = Convert.ToDateTime(colaboradorInsertDTO.DtNascimento),
                 Sexo = colaboradorInsertDTO.Sexo,
                 Email = colaboradorInsertDTO.Email,
                 Telefone = colaboradorInsertDTO.Telefone,
@@ -99,7 +99,7 @@ namespace PROJETO.IHC.Service.Services
                 Id = colaborador.Id,
                 Nome = colaborador.Nome,
                 DocumentoCPF = colaborador.DocumentoCPF,
-                DtNascimento = colaborador.DtNascimento,
+                DtNascimento = colaborador.DtNascimento.ToString(),
                 Sexo = colaborador.Sexo,
                 Email = colaborador.Email,
                 Telefone = colaborador.Telefone,
@@ -122,7 +122,7 @@ namespace PROJETO.IHC.Service.Services
                 Id = colaboradorUpdateDTO.Id,
                 Nome = colaboradorUpdateDTO.Nome,
                 DocumentoCPF = colaboradorUpdateDTO.DocumentoCPF,
-                DtNascimento = colaboradorUpdateDTO.DtNascimento,
+                DtNascimento = Convert.ToDateTime(colaboradorUpdateDTO.DtNascimento),
                 Sexo = colaboradorUpdateDTO.Sexo,
                 Email = colaboradorUpdateDTO.Email,
                 Telefone = colaboradorUpdateDTO.Telefone,
@@ -141,7 +141,7 @@ namespace PROJETO.IHC.Service.Services
                 Id = colaborador.Id,
                 Nome = colaborador.Nome,
                 DocumentoCPF = colaborador.DocumentoCPF,
-                DtNascimento = colaborador.DtNascimento,
+                DtNascimento = colaborador.DtNascimento.ToString(),
                 Sexo = colaborador.Sexo,
                 Email = colaborador.Email,
                 Telefone = colaborador.Telefone,
@@ -166,6 +166,11 @@ namespace PROJETO.IHC.Service.Services
                 throw new KeyNotFoundException($"Colaborador com Id: {id} não encontrada");
 
             return isDelete;
+        }
+
+        public bool LoginColaborador(ColaboradorLoginDTO empresaLoginDTO)
+        {
+            throw new NotImplementedException();
         }
     }
 }

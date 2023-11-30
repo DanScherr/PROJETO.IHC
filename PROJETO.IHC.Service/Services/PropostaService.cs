@@ -31,8 +31,8 @@ namespace PROJETO.IHC.Service.Services
                 DescricaoProposta = proposta.DescricaoProposta,
                 ValorProsposta = proposta.ValorProsposta,
                 StatusProposta = proposta.StatusProposta,
-                DtInicio = proposta.DtInicio,
-                DtFim = proposta.DtFim,
+                DtInicio = proposta.DtInicio.ToString(),
+                DtFim = proposta.DtFim.ToString(),
                 IdColaborador = proposta.IdColaborador,
                 IdProjeto = proposta.IdProjeto,
                 Ativo = proposta.Ativo
@@ -52,8 +52,8 @@ namespace PROJETO.IHC.Service.Services
                     DescricaoProposta = x.DescricaoProposta,
                     ValorProsposta = x.ValorProsposta,
                     StatusProposta = x.StatusProposta,
-                    DtInicio = x.DtInicio,
-                    DtFim = x.DtFim,
+                    DtInicio = x.DtInicio.ToString(),
+                    DtFim = x.DtFim.ToString(),
                     IdColaborador = x.IdColaborador,
                     IdProjeto = x.IdProjeto,
                     Ativo = x.Ativo
@@ -69,8 +69,8 @@ namespace PROJETO.IHC.Service.Services
                 DescricaoProposta = propostaInsertDTO.DescricaoProposta,
                 ValorProsposta = propostaInsertDTO.ValorProsposta,
                 StatusProposta = propostaInsertDTO.StatusProposta,
-                DtInicio = propostaInsertDTO.DtInicio,
-                DtFim = propostaInsertDTO.DtFim,
+                DtInicio = Convert.ToDateTime(propostaInsertDTO.DtInicio),
+                DtFim = Convert.ToDateTime(propostaInsertDTO.DtFim),
                 IdColaborador = propostaInsertDTO.IdColaborador,
                 IdProjeto = propostaInsertDTO.IdProjeto
             };
@@ -89,8 +89,8 @@ namespace PROJETO.IHC.Service.Services
                 DescricaoProposta = proposta.DescricaoProposta,
                 ValorProsposta = proposta.ValorProsposta,
                 StatusProposta = proposta.StatusProposta,
-                DtInicio = proposta.DtInicio,
-                DtFim = proposta.DtFim,
+                DtInicio = proposta.DtInicio.ToString(),
+                DtFim = proposta.DtFim.ToString(),
                 IdColaborador = proposta.IdColaborador,
                 IdProjeto = proposta.IdProjeto,
                 Ativo = proposta.Ativo
@@ -108,8 +108,8 @@ namespace PROJETO.IHC.Service.Services
                 DescricaoProposta = propostaUpdateDTO.DescricaoProposta,
                 ValorProsposta = propostaUpdateDTO.ValorProsposta,
                 StatusProposta = propostaUpdateDTO.StatusProposta,
-                DtInicio = propostaUpdateDTO.DtInicio,
-                DtFim = propostaUpdateDTO.DtFim,
+                DtInicio = Convert.ToDateTime(propostaUpdateDTO.DtInicio),
+                DtFim = Convert.ToDateTime(propostaUpdateDTO.DtFim),
                 IdColaborador = propostaUpdateDTO.IdColaborador,
                 IdProjeto = propostaUpdateDTO.IdProjeto
             };
@@ -123,8 +123,8 @@ namespace PROJETO.IHC.Service.Services
                 DescricaoProposta = proposta.DescricaoProposta,
                 ValorProsposta = proposta.ValorProsposta,
                 StatusProposta = proposta.StatusProposta,
-                DtInicio = proposta.DtInicio,
-                DtFim = proposta.DtFim,
+                DtInicio = proposta.DtInicio.ToString(),
+                DtFim = proposta.DtFim.ToString(),
                 IdColaborador = proposta.IdColaborador,
                 IdProjeto = proposta.IdProjeto,
                 Ativo = proposta.Ativo
