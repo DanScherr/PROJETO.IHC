@@ -8,7 +8,7 @@ namespace PROJETO.IHC.Domain.DTOs.Colaborador
 
         public string Nome { get; set; }
 
-        public DateTime DtNascimento { get; set; }
+        public string DtNascimento { get; set; }
 
         public ESexo Sexo { get; set; }
 

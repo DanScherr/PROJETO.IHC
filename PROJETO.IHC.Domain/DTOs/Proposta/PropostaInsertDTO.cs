@@ -8,9 +8,9 @@ namespace PROJETO.IHC.Domain.DTOs.Proposta
 
         public string DescricaoProposta { get; set; }
 
-        public DateTime DtInicio { get; set; }
+        public string DtInicio { get; set; }
 
-        public DateTime DtFim { get; set; }
+        public string DtFim { get; set; }
 
         public decimal ValorProsposta { get; set; }
 
