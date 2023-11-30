@@ -126,9 +126,13 @@ namespace PROJETO.IHC.API.Controllers
         {
             try
             {
-                var isAccess = _colaboradorService.LoginColaborador(colaboradorLoginDTO);
+                var idColaborador = _colaboradorService.LoginColaborador(colaboradorLoginDTO);
 
-                return Ok(isAccess);
+                return Ok(new { id = idColaborador });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return BadRequest(new { message = ex.Message });
             }
             catch (Exception ex)
             {

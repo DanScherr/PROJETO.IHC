@@ -164,9 +164,14 @@ namespace PROJETO.IHC.Service.Services
             return isDelete;
         }
 
-        public bool LoginEmpresa(EmpresaLoginDTO empresaLoginDTO)
+        public int LoginEmpresa(EmpresaLoginDTO empresaLoginDTO)
         {
-            throw new NotImplementedException();
+            var empresa = _empresaRepository.LoginEmpresa(empresaLoginDTO.Email, empresaLoginDTO.Senha);
+
+            if (empresa == null)
+                throw new KeyNotFoundException("Empresa não enconttado!");
+
+            return empresa.Id;
         }
     }
 }

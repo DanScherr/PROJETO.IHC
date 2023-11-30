@@ -170,9 +170,14 @@ namespace PROJETO.IHC.Service.Services
             return isDelete;
         }
 
-        public bool LoginColaborador(ColaboradorLoginDTO empresaLoginDTO)
+        public int LoginColaborador(ColaboradorLoginDTO colaboradorLoginDTO)
         {
-            throw new NotImplementedException();
+            var colaborador = _colaboradorRepository.ColaboradorLogin(colaboradorLoginDTO.Email, colaboradorLoginDTO.Senha);
+
+            if (colaborador == null)
+                throw new KeyNotFoundException("Colaborador não enconttado!");
+
+            return colaborador.Id;
         }
     }
 }

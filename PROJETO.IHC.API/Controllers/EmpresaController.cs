@@ -126,9 +126,13 @@ namespace PROJETO.IHC.API.Controllers
         {
             try
             {
-                var isAccess = _empresaService.LoginEmpresa(empresaLoginDTO);
+                var idEmpresa = _empresaService.LoginEmpresa(empresaLoginDTO);
 
-                return Ok(isAccess);
+                return Ok(new { id = idEmpresa });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return BadRequest(new { message = ex.Message });
             }
             catch (Exception ex)
             {

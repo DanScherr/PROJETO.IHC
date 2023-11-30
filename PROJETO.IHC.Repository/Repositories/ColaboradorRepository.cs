@@ -7,9 +7,9 @@ namespace PROJETO.IHC.Repository.Repositories
     {
         public ColaboradorRepository(DatabaseContext context) : base(context) { }
 
-        public bool ColaboradorLogin(string email, string senha)
+        public Colaborador ColaboradorLogin(string email, string senha)
         {
-            throw new NotImplementedException();
+            return _dbSet.Where(x => x.Email.ToUpper() == email.ToUpper() && x.Senha == senha && x.Ativo).FirstOrDefault();
         }
     }
 }

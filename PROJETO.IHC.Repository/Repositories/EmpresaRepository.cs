@@ -7,9 +7,9 @@ namespace PROJETO.IHC.Repository.Repositories
     {
         public EmpresaRepository(DatabaseContext context) : base(context) { }
 
-        public bool LoginEmpresa(string email, string senha)
+        public Empresa LoginEmpresa(string email, string senha)
         {
-            throw new NotImplementedException();
+            return _dbSet.Where(x => x.Email.ToUpper() == email.ToUpper() && x.Senha == senha && x.Ativo).FirstOrDefault();
         }
     }
 }
