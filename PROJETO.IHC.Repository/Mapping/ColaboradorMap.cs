@@ -16,6 +16,7 @@ namespace PROJETO.IHC.Repository.Mapping
             builder.Property(x => x.DocumentoCPF).IsRequired();
             builder.Property(x => x.Telefone).IsRequired();
             builder.Property(x => x.Email).IsRequired();
+            builder.Property(x => x.Senha).IsRequired();
             builder.Property(x => x.Logradouro).IsRequired();
             builder.Property(x => x.Numero).IsRequired();
             builder.Property(x => x.Bairro).IsRequired();
